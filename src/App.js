@@ -1,14 +1,23 @@
 
 import './App.css';
 import Header from './components/Header';
-import NavB from './components/Navbar';
+import Cart from './components/Cart';
+import Home from './components/Home';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+
 
 function App() {
   return (
-    <>
-    <NavB />
+    <BrowserRouter>
     <Header />
-    </>
+    <Routes>
+     
+        <Route path="/" element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
+        {/* <Route path=":productId" element={<Team />} />     */}
+    
+    </Routes>
+  </BrowserRouter>
   );
 }
 
