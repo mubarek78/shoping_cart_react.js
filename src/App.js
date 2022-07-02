@@ -1,5 +1,4 @@
 
-import './App.css';
 import Header from './components/Header';
 import Cart from './components/Cart';
 import Home from './components/Home';
@@ -14,7 +13,7 @@ function App() {
      
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
-        {/* <Route path=":productId" element={<Team />} />     */}
+     
     
     </Routes>
   </BrowserRouter>

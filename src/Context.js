@@ -1,7 +1,6 @@
 import { createContext, useContext, useState, useReducer, useEffect } from "react";
-import Data from "./db"; 
 import { itemReducer } from "./Reducer";
-const axios = require('axios');
+
 
 
 const shoppingData = createContext();
@@ -18,9 +17,9 @@ const Context = ({ children }) => {
     }, []);
 
     
-    console.log(targetProducts)
+    // console.log(targetProducts)
 
-   const productsList = Data.toys.map((data) => data);
+//    const productsList = Data.toys.map((data) => data);
   
   const [state, dispatch] = useReducer(itemReducer, {
     productsList: targetProducts,
