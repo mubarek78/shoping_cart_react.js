@@ -1,23 +1,36 @@
-import { createContext, useContext, useState, useReducer } from "react";
+import { createContext, useContext, useState, useReducer, useEffect } from "react";
 import Data from "./db"; 
 import { itemReducer } from "./Reducer";
+const axios = require('axios');
 
 
 const shoppingData = createContext();
 
 
 const Context = ({ children }) => {
-  const [cart, setCart] = useState([]);
 
-  const productsList = Data.toys.map((data) => data);
+    const [targetProducts, settargetProducts] = useState([]);
+
+    useEffect(() => {
+      fetch("https://my-shop-products-api.herokuapp.com/toys")
+        .then((response) => response.json())
+        .then(data => settargetProducts(()=> data))
+    }, []);
+
+    
+    console.log(targetProducts)
+
+   const productsList = Data.toys.map((data) => data);
   
   const [state, dispatch] = useReducer(itemReducer, {
-    productsList: productsList,
+    productsList: targetProducts,
     cart: [],
+    // targetProducts: targetProducts
+  
   });
 
   return (
-    <shoppingData.Provider value={{ state, dispatch }}>
+    <shoppingData.Provider value={{ state, dispatch, targetProducts }}>
       {children}
     </shoppingData.Provider>
   );
