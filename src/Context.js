@@ -16,10 +16,6 @@ const Context = ({ children }) => {
         .then(data => settargetProducts(()=> data))
     }, []);
 
-    
-    // console.log(targetProducts)
-
-//    const productsList = Data.toys.map((data) => data);
   
   const [state, dispatch] = useReducer(itemReducer, {
     productsList: targetProducts,
@@ -28,8 +24,21 @@ const Context = ({ children }) => {
   
   });
 
+  const increase = (id) => {
+    dispatch({ type: 'INCREASE', payload: id })
+  }
+  const decrease = (id) => {
+    dispatch({ type: 'DECREASE', payload: id })
+  }
+
   return (
-    <shoppingData.Provider value={{ state, dispatch, targetProducts }}>
+    <shoppingData.Provider value={{ 
+      state, 
+      dispatch, 
+      targetProducts,
+      increase,
+      decrease
+      }}>
       {children}
     </shoppingData.Provider>
   );

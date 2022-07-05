@@ -7,18 +7,13 @@ function Home() {
     const { state : {productsList}, targetProducts} = ShopState();
     console.log(targetProducts)
   return (
-    <>
-    <div>Products</div>
-    <Container xs={4} className="mt-3" >
-    <Col >
-    <Row>
+    <div className='card-container'>
+    
     {targetProducts.map((product) => <SingleProduct key={product.id} product={product}/>
     )
     }
-    </Row>
-    </Col>
-    </Container>
-    </>
+  
+    </div>
   )
 }
 

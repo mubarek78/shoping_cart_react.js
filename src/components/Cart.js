@@ -5,14 +5,18 @@ import { ShopState } from "../Context";
 import { FaCcVisa, FaCcMastercard, FaPaypal } from 'react-icons/fa';
 import {IoMdAddCircle } from 'react-icons/io';
 import {HiMinusCircle } from 'react-icons/hi';
+import {IoMdArrowRoundBack } from 'react-icons/io';
+import {Link}  from "react-router-dom"
 
 
 const Cart = () => {
   const {
     state: { cart, targetProducts },
     dispatch,
+    increase,
+    decrease
   } = ShopState();
-  const [total, setTotal] = useState();
+  const [total, setTotal] = useState(0);
  
 
   useEffect(() => {
@@ -22,11 +26,18 @@ const Cart = () => {
   }, [cart]);
 
 
-  function handelSubmit(e){
-    e.priventDefault();
-
+  if (cart.length === 0) {
+    return (
+      <section className='cart'>
+        {/* cart header */}
+        <header>
+          <h2>your bag</h2>
+          <h4 className='empty-cart'>is currently empty</h4>
+        </header>
+      </section>
+    )
   }
-  console.log(targetProducts)
+
   return ( 
  <>
     
@@ -38,28 +49,38 @@ const Cart = () => {
                <div className="itemImage">
                    <img src={prod.image} alt={prod.name} />
                </div>
-               <p>Color</p>
+               <p className="prodName">{prod.name}</p>
                <p>{prod.qty}</p>
-               <div className="Btns">
-               <form onSubmit={handelSubmit}>
-                <input className="qty-input" type="text" value={prod.qty} 
-                     onChange={(e) =>
+               <button className="add" onClick={() => increase(prod.id)}><IoMdAddCircle /></button>
+               <p className="qty-input">{prod.qty}</p>
+               <button className="sub" onClick={() => decrease(prod.id)}><HiMinusCircle /></button>
+      
+              
+               <p>$95</p>
+              <button 
+              type="button"
+                   className="deletBtn"
+                    onClick={() =>
                       dispatch({
-                        type: "CHANGE_CART_QTY",
-                        payload: {
-                          id: prod.id,
-                          qty: e.target.value,
-                        },
+                        type: "REMOVE_FROM_CART",
+                        payload: prod,
                       })
                     }
-                />
-                   <button className="add"><IoMdAddCircle /></button>
-                   <button className="sub"><HiMinusCircle /></button>
-                </form>
-               </div>
-               <p>{prod.price}</p>
+              ><AiFillDelete /></button>
            </div>
            ))}
+          
+         <div className="cartFooter">
+         <div className="cartFootersec">
+         <Link to="/"><IoMdArrowRoundBack /> Back to shop</Link>
+          </div>
+
+          <div className="cartFootersec">
+          <p>subtotal:</p>
+          <p>$1000</p>
+          </div>
+
+         </div>
           </div>
   
            <div className="card-detail">
@@ -75,19 +96,24 @@ const Cart = () => {
                        <input className="cardNumber" type="text" />
 
                        <div className="payment">
-                           <input type="text" className="ccFormatMonitor paymentInput" placeholder="Card Number" />
+                           <input type="text" className="ccFormatMonitor paymentInput" />
                            <span>/</span>
-                           <input className="date paymentInput" type="text" placeholder="MM / YY" />
+                           <input className="date paymentInput" type="text"  />
                            <span>/</span>
-                           <input className="cvv paymentInput" placeholder="CVV" />
+                           <input className="cvv paymentInput"  />
                        </div>
 
-                       <h3 className="checkOut">Check Out</h3>
+                       <button className="checkOut">Check Out</button>
                    </label>
                </div>
-      
+  
     </div>
-    
+    <button
+          className='btn clear-btn'
+          onClick={() => console.log('clear cart')}
+        >
+          clear cart
+        </button>
     </>
 
   );

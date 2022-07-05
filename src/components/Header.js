@@ -21,77 +21,27 @@ function Header() {
       } = ShopState();
     
   return (
-    <Navbar bg="primary" expand="lg">
-      <Container fluid>
-        <Navbar.Brand href="/">Navbar scroll</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Link</Nav.Link>
-            <Dropdown >
-            <Dropdown.Toggle variant="success">
-              <CgShoppingCart color="primery" fontSize="25px" />
-              <Badge>{cart.length}</Badge>
-            </Dropdown.Toggle>
+    <section id="screen1">
 
-            <Dropdown.Menu style={{ minWidth: 370 }}>
-              {cart.length > 0 ? (
-                <>
-                  {cart.map((prod) => (
-                    <span className="cartitem" key={prod.id}>
-                      <img
-                        src={prod.image}
-                        className="cartItemImg"
-                        alt={prod.name}
-                      />
-                      <div className="cartItemDetail">
-                        <span>{prod.name}</span>
-                        <span>$ {prod.price}</span>
-                      </div>
-                      <RiDeleteBin6Line
-                        fontSize="20px"
-                        style={{ cursor: "pointer" }}
-                        onClick={() =>
-                          dispatch({
-                            type: "REMOVE_FROM_CART",
-                            payload: prod,
-                          })
-                        }
-                      />
-                    </span>
-                  ))}
-                  <Link to="/cart">
-                    <Button style={{ width: "95%", margin: "0 10px" }}>
-                      Go To Cart
-                    </Button>
-                  </Link>
-                </>
-              ) : (
-                <span style={{ padding: 10 }}>Cart is Empty!</span>
-              )}
-            </Dropdown.Menu>
-            </Dropdown>
-            <Nav.Link href="/cart">
-            
-            </Nav.Link>
-          </Nav>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    {/* <p>Scroll down</p> */}
+  
+    <nav>
+       
+    <Link to="/">Shopping Cart</Link>
+    <Link to="/cart">
+    {/* <Button style={{ width: "95%", margin: "0 10px" }}>
+      Go To Cart
+    </Button> */}
+    <CgShoppingCart />{cart.length}
+    </Link>
+           
+       
+    </nav>
+  
+  </section>
+  
+  // <section id="screen2"></section>
+  // <section id="screen3"></section>
   )
 }
 
