@@ -27,6 +27,16 @@ export const itemReducer = (state, action) => {
       .filter((cartItem) => cartItem.amount !== 0)
     return { ...state, cart: tempeCart }
   
+    // case "UPDATE_PRICE":
+    //   return {
+    //     ...state,
+    //     total: payload.total
+    //   };
+    //   case "UPDATE_PODUCT_COUNT":
+    //     return {
+    //       ...state,
+    //       count: payload.count
+    //     };
 
       default:
         return state;

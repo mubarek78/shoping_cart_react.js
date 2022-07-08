@@ -56,7 +56,7 @@ const Cart = () => {
                <button className="sub" onClick={() => decrease(prod.id)}><HiMinusCircle /></button>
       
               
-               <p>$95</p>
+               <p>${prod.price * prod.qty}</p>
               <button 
               type="button"
                    className="deletBtn"
@@ -77,7 +77,7 @@ const Cart = () => {
 
           <div className="cartFootersec">
           <p>subtotal:</p>
-          <p>$1000</p>
+          <p>${total}</p>
           </div>
 
          </div>
