@@ -73,7 +73,7 @@ button:focus {
 }
 
 .ghost-round:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(123, 119, 119, 0.15);
   color: #fff;
   -webkit-transition: all .2s ease;
   transition: all .2s ease;
@@ -116,7 +116,7 @@ button:focus {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  background: #eee;
+  background: rgb(148, 95, 95);
   height: 100%;
 }
 
@@ -173,13 +173,13 @@ button:focus {
   box-sizing: border-box;
   height: 560px;
   width: 360px;
-  background: #fff;
+  background: rgb(185, 187, 174);
   background: url('https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823') top left no-repeat;
 }
 
 .overlay {
-  background: -webkit-linear-gradient(#8CA6DB, #B993D6);
-  background: linear-gradient(#8CA6DB, #B993D6);
+  background: -webkit-linear-gradient(#bed0f3, #875978);
+  background: linear-gradient(#485e67, #73b476);
   opacity: 0.85;
   filter: alpha(opacity=85);
   height: 560px;

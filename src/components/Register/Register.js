@@ -63,20 +63,18 @@ function Register() {
 
   return (
     <>
-    <div className='bold-line'></div>
+    {/* <div className='bold-line'></div> */}
 <div className='container'>
 
-{Object.keys(formErrors).length === 0 && isSubmit ? (
+{Object.keys(formErrors).length === 0 && isSubmit && (
                   navigate("/")
-      ) : (
-        <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
-      )}
+      ) }
 
   <form className='window' onSubmit={handleSubmit}>
     <div className='overlay'></div>
     <div className='content'>
       <div className='welcome'>Hello There!</div>
-      <div className='subtitle'>We're almost done. Before using our services you need to create an account.</div>
+      <div className='subtitle'>welcome to ower shop</div>
       <div className='input-fields'>
         <input  type="text"
               name="username"
