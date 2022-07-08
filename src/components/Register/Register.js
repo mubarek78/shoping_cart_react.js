@@ -21,6 +21,16 @@ function Register() {
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
+    
+  fetch('https://my-shop-products-api.herokuapp.com/toys', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(formValues)
+})
+    console.log(formValues)
   };
 
   useEffect(() => {
